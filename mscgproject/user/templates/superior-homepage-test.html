@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OA办公系统</title>
+	<!-- 引入JQuery -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!-- 引入EasyUI -->
+    <script type="text/javascript" src="{% static 'easyui/jquery.easyui.min.js' %}"></script>
+    <!-- 引入EasyUI的中文国际化js，让EasyUI支持中文 -->
+    <script type="text/javascript" src="{% static 'easyui/locale/easyui-lang-zh_CN.js' %}"></script>
+    <!-- 引入EasyUI的样式文件-->
+    <link rel="stylesheet" href="{% static 'easyui/themes/default/easyui.css' %}" type="text/css"/>
+    <!-- 引入EasyUI的图标样式文件-->
+   	<link rel="stylesheet" href="{% static 'easyui/themes/icon.css' %}" type="text/css"/>
+   	<link rel="stylesheet" href="{% static 'css/default.css' %}" type="text/css">
+   	<style type="text/css">
+   		.mybutton{
+   			border: 1px solid #bbb;
+   			background-color: #F5F5F5;
+   		}
+/*   		.mybutton1{
+   			border: 1px solid #bbb;
+   			background-color: #F5F5F5;
+   			border-radius: 5px;
+   			text-align: center;
+   		}*/
+   	</style>
+</head>
+<body>
+	<div class='easyui-layout' data-options='fit:true'>
+		<div region='north'  style='height: 55px;line-height: 55px;background-color: #95B8E7;overflow: hidden;'>
+			<p style='color: #362B36;font-size: 23px;margin-left: 20px'>OA办公系统</p>
+		</div>
+		<div  region='west' split='true' title='菜单导航' style='width: 150px'>
+			<div id='left' class="easyui-accordion">
+		        <div title="信息查询">
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("工资查询","salary.html")'>工资查询</a>
+		        	</p>
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("假期查询","vacation.html")'>假期查询</a>
+		        	</p>
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("考勤查询","attendance.html")'>考勤查询</a>
+		        	</p>
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("部门信息查询","section-information.html")'>部门信息查询</a>
+		        	</p>
+		        </div>
+		        <div title="办公管理">
+		        	<p>
+		        		<a href='#' class='easyui-menubutton mybutton' data-options='width:140, align:"center",menu:"#check",' onclick='addTab("审批","check.html")'>审批</a>
+		        	</p>
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("请假","qingjia.html")'>请假</a>
+		        	</p>
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("加班","jiaban.html")'>加班</a>
+		        	</p>
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("外出","waichu.html")'>外出</a>
+		        	</p>
+		        </div>
+		        <div title='通讯录管理'>
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("查看通讯录","addresslist.html")'>查看通讯录</a>
+		        	</p>
+		        </div>
+		        <div title='系统管理'>
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("个人信息",
+		        		"personal.html")'>个人信息</a>
+		        	</p>
+		        	<p>
+		        		<a href='#' class='easyui-linkbutton' data-options='width:140, align:"center",' onclick='addTab("修改密码",
+		        		"updatepwd.html")'>修改密码</a>
+		        	</p>
+		        	<p>
+		        		<a href='login.html' class='easyui-linkbutton' data-options='width:140, align:"center",'>退出系统</a>
+		        	</p>
+		        </div>
+		    </div>
+	    </div>
+	    <div id='check'>
+	   				<div data-options='iconCls:"icon-leave1"' onclick='addTab("请假审批","jiaban.html")'>
+		        		请假审批
+		        	</div>
+		        	<div data-options='iconCls:"icon-out"' onclick='addTab("加班审批","jiaban.html")'>
+		        		外出审批
+		        	</div>
+		</div>
+	    <div region='center'>
+	    	<div id='tt' class='easyui-tabs' data-options='fit:true,tabWidth:112'>
+	    		<div title='首页'>
+	    		</div>
+	    	</div>
+	    </div>
+	    <div region='south' style='height: 35px;line-height: 30px; text-align: center;
+	    margin-top: 8px;'>
+	    	<div style="color: #362B36">Copyright &copy by???小组</div>
+	    </div>
+	    <div  region='east' split='true' title='日历' style='width: 190px'>
+	    	<div class='easyui-calendar' style='width:180px;height:180px'>
+	    	</div>
+	    </div>
+	</div>
+	<script>
+    	function addTab(title, url){
+    		if ($('#tt').tabs('exists', title)){
+    			$('#tt').tabs('select', title);
+    		}else{
+    			var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+    			$('#tt').tabs('add',{
+    				title:title,
+    				content:content,
+    				closable:true 
+    			});
+    		}
+    	}
+    </script>
+</body>
+</html>

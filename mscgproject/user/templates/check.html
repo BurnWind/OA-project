@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OA办公系统</title>
+	<link rel="stylesheet" href="css/default.css" type="text/css">
+</head>
+<body>
+	<h4>请假审批表</h4>
+	<table>
+			<tr>
+				<td class='td1'>工号</td>
+				<td><input type="text" name="staffid"></td>
+				<td class='td1'>姓名：</td>
+				<td><input type="text" name="staffName"></td>
+				<td class='td1'>性别：</td>
+				<td>男</td>
+			</tr>
+			<tr>
+				<td class='td1'>性别：</td>
+				<td>
+					<input type="radio" name="sex">
+					<span>男</span>
+					<input type="radio" name="sex">
+					<span>女</span>
+				</td>
+				<td class='td1'>部门：</td>
+				<td><input type="text" name="section"></td>
+			</tr>
+			<tr>
+				<td class='td1'>职务：</td>
+				<td><input type="text" name="job"></td>
+				<td class='td1'>日期：</td>
+				<td><input type="text" name="date"></td>
+			</tr>
+			<tr>
+				<td class='td1'>请假原因：</td>
+				<td>
+					<textarea cols="80" rows="8"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td class='td1'>请假起始日期：</td>
+				<td><input type="text" class='easyui-datebox date' name="startDay"></td>
+				<td class='td1'>请假结束日期：</td>
+				<td><input type="text" class='easyui-datebox date' name="endDay"></td>
+			</tr>
+			<tr>
+				<td class='td1'>审批意见：</td>
+				<td>
+					<select>
+						<option>同意</option>
+						<option>不同意</option>
+					</select>
+				</td>
+				<td class='td1'>审核人：</td>
+				<td><input type="text" name="checkedname"></td>
+			</tr>
+		</table>
+		<p id="end">
+			<button>同意</button>
+			<button>不同意</button>
+		</p>		
+</body>
+</html>
